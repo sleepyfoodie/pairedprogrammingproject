@@ -1,16 +1,25 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {d3} from 'd3';
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
 
-class App extends Component {
-  constructor (){
-    super()
-    
-  }
-  render() {
+.counties {
+  fill: none;
+}
 
-    var svg = d3.select("svg"),
+.states {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+}
+
+</style>
+<svg width="960" height="600"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://d3js.org/topojson.v2.min.js"></script>
+<script>
+
+var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height");
 
@@ -82,12 +91,5 @@ function ready(error, us) {
       .attr("class", "states")
       .attr("d", path);
 }
-    return (
-      <div className="App">
-          
-      </div>
-    );
-  }
-}
 
-export default App;
+</script>
