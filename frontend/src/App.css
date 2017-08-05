@@ -1,10 +1,15 @@
-
-.counties {
-  fill: none;
+.territory-west:hover{
+ fill:#B1DBA6;
 }
 
-.states {
-  fill: none;
-  stroke: #fff;
-  stroke-linejoin: round;
+.territory-northeast:hover{
+ fill:#79909B;
+}
+
+.territory-ksmo:hover{
+ fill:#F7CC7E;
+}
+
+.territory-southeast:hover{
+ fill:#EFA497;
 }
