@@ -7,6 +7,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
+        <h1> This is our amazing blackjack project. </h1>
         <Dealer />
         <Player />
       </div>
