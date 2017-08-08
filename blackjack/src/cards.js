@@ -267,11 +267,8 @@ constructor(){
           image: "/cards/queen_of_spades/png"
         }
     ]
-
     }
-
 }
-
   render() {
     return (
       <div>
