@@ -310,6 +310,7 @@ let dealersHand = [];
 
     return (
       <div>
+        <img src="{this.state.deck.twoclub.path}"/>
 
       </div>
     );
