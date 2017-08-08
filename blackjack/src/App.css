@@ -1,0 +1,22 @@
+.container{
+  position: static;
+  margin: auto;
+}
+.dealer{
+  border: 5px solid black;
+  padding: 200px;
+  position: absolute;
+  top: 2%;
+  left: 40%;
+
+}
+
+.player{
+  border: 5px solid black;
+  padding: 200px;
+  position: absolute;
+  top: 60%;
+  left: 40%
+  
+
+}

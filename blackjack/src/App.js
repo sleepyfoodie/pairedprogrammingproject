@@ -6,7 +6,7 @@ import Dealer from './dealerboard';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="container">
         <Dealer />
         <Player />
       </div>

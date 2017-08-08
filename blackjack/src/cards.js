@@ -5,8 +5,9 @@ class Cards extends Component {
 constructor(){
     super()
     this.state= {
-    cards: [
-        {
+    cards: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51],
+    deck: [
+            {
             name: 'twoofclubs',
             value: 2,
             image: '/cards/2_of_clubs.png'
@@ -268,8 +269,45 @@ constructor(){
         }
     ]
     }
+this.cardDealPlayer=this.cardDealPlayer.bind(this);
+this.cardDealDealer=this.cardDealDealer.bind(this);
+
 }
+
+
+
+cardDealPlayer(){
+
+for (i = 0; i<2; i++){
+    var index = Math.floor((Math.random() * this.state.cards.length))
+    if(index == this.state.cards.length +1){
+        index = Math.floor((Math.random() * this.state.cards.length))
+    }
+    else{
+    playersHand.push(this.state.cards[index]);
+    this.state.cards.splice(i,1)
+    }
+}
+};
+
+cardDealDealer(){
+
+for (i = 0; i<2; i++){
+    var index = Math.floor((Math.random() * this.state.cards.length))
+    if(index == this.state.cards.length +1){
+        index = Math.floor((Math.random() * this.state.cards.length))
+    }
+    else{
+    dealersHand.push(this.state.cards[index]);
+    this.state.cards.splice(i,1)
+    }
+}
+};
+
   render() {
+let playersHand = [];
+let dealersHand = [];
+
     return (
       <div>
 
