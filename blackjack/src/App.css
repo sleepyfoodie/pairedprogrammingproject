@@ -26,3 +26,5 @@ body {
   background: -moz-linear-gradient(right, red, green); /* For Firefox 3.6 to 15 */
   background: linear-gradient(to right, red , green); /* Standard syntax */
 }
+
+/* deck of cards API link: https://deckofcardsapi.com/ */
