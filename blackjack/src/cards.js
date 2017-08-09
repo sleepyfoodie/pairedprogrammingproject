@@ -276,33 +276,33 @@ this.cardDealDealer=this.cardDealDealer.bind(this);
 
 
 
-cardDealPlayer(){
+// cardDealPlayer(){
 
-for (i = 0; i<2; i++){
-    var index = Math.floor((Math.random() * this.state.cards.length))
-    if(index == this.state.cards.length +1){
-        index = Math.floor((Math.random() * this.state.cards.length))
-    }
-    else{
-    playersHand.push(this.state.cards[index]);
-    this.state.cards.splice(i,1)
-    }
-}
-};
+// for (i = 0; i<2; i++){
+//     var index = Math.floor((Math.random() * this.state.cards.length))
+//     if(index == this.state.cards.length +1){
+//         index = Math.floor((Math.random() * this.state.cards.length))
+//     }
+//     else{
+//     playersHand.push(this.state.cards[index]);
+//     this.state.cards.splice(i,1)
+//     }
+// }
+// };
 
-cardDealDealer(){
+// cardDealDealer(){
 
-for (i = 0; i<2; i++){
-    var index = Math.floor((Math.random() * this.state.cards.length))
-    if(index == this.state.cards.length +1){
-        index = Math.floor((Math.random() * this.state.cards.length))
-    }
-    else{
-    dealersHand.push(this.state.cards[index]);
-    this.state.cards.splice(i,1)
-    }
-}
-};
+// for (i = 0; i<2; i++){
+//     var index = Math.floor((Math.random() * this.state.cards.length))
+//     if(index == this.state.cards.length +1){
+//         index = Math.floor((Math.random() * this.state.cards.length))
+//     }
+//     else{
+//     dealersHand.push(this.state.cards[index]);
+//     this.state.cards.splice(i,1)
+//     }
+// }
+// };
 
   render() {
 let playersHand = [];
