@@ -8,6 +8,7 @@ class Dealer extends Component {
       <div>
     <dealerbbox className="dealer">
      Dealer's Hand:
+     <Cards />
      </dealerbbox>
       </div>
     );

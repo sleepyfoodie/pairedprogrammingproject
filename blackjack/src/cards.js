@@ -5,7 +5,11 @@ class Cards extends Component {
 constructor(){
     super()
     this.state= {
-    cards: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51],
+    cards: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,
+            20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,
+          39,40,41,42,43,44,45,46,47,48,49,50,51],
+    playersHand:[],
+    dealersHand: [],   
     deck: [
             {
             name: 'twoofclubs',
@@ -274,47 +278,68 @@ this.cardDealDealer=this.cardDealDealer.bind(this);
 
 }
 
+playerhit(){
+
+}
+
+cardDealPlayer(){
+let playersHand = this.state.playersHand;
+let tempDeck = this.state.cards;
+
+for (let i = 0; i<2; i++){
+var index = Math.floor((Math.random() * tempDeck.length))
+
+     playersHand.push(tempDeck[index]);
+     tempDeck.splice(index,1)
+     }
+
+this.setState({
+    cards: tempDeck,
+    playersHand: playersHand
+})
+ 
+};
 
 
-// cardDealPlayer(){
+ cardDealDealer(){
 
-// for (i = 0; i<2; i++){
-//     var index = Math.floor((Math.random() * this.state.cards.length))
-//     if(index == this.state.cards.length +1){
-//         index = Math.floor((Math.random() * this.state.cards.length))
-//     }
-//     else{
-//     playersHand.push(this.state.cards[index]);
-//     this.state.cards.splice(i,1)
-//     }
-// }
-// };
+ for (let i = 0; i<2; i++){
+     var index = Math.floor((Math.random() * this.state.cards.length))
 
-// cardDealDealer(){
+     dealersHand.push(this.state.deck[index]);
+     this.state.cards.splice(index,1)
+     }
 
-// for (i = 0; i<2; i++){
-//     var index = Math.floor((Math.random() * this.state.cards.length))
-//     if(index == this.state.cards.length +1){
-//         index = Math.floor((Math.random() * this.state.cards.length))
-//     }
-//     else{
-//     dealersHand.push(this.state.cards[index]);
-//     this.state.cards.splice(i,1)
-//     }
-// }
-// };
+ };
+
 
   render() {
-let playersHand = [];
-let dealersHand = [];
 
     return (
       <div>
         <img src="{this.state.deck.twoclub.path}"/>
-
+        <button> Hit </button>
+        <button> Stay </button>
       </div>
     );
   }
 }
 
 export default Cards;
+
+
+
+
+/* cardDealDealer(){
+
+ for (let i = 0; i<2; i++){
+     var index = Math.floor((Math.random() * this.state.cards.length))
+     if(index == this.state.cards.length +1){
+        index = Math.floor((Math.random() * this.state.cards.length))
+     }
+     else{
+     dealersHand.push(this.state.deck[index]);
+     this.state.cards.splice(i,1)
+     }
+ }
+ };*/

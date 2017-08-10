@@ -8,6 +8,7 @@ class Player extends Component {
       <div>
           <playerbox className="player">
      Player's Hand:
+     <Cards />
         </playerbox>
       </div>
     );
