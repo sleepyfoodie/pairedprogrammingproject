@@ -27,4 +27,8 @@ body {
   background: linear-gradient(to right, red , green); /* Standard syntax */
 }
 
+img {
+  width: 100%;
+}
+
 /* deck of cards API link: https://deckofcardsapi.com/ */

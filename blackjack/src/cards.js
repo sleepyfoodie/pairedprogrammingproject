@@ -271,8 +271,9 @@ class Cards extends Component {
         }
         this.cardDealPlayer = this.cardDealPlayer.bind(this);
         this.cardDealDealer = this.cardDealDealer.bind(this);
-
+        
     }
+    
 
     playerhit() {
 
@@ -316,10 +317,13 @@ class Cards extends Component {
 
     render() {
 
+
         return (
             <div>
-                <img src={this.state.deck[0].name} alt="card"/>
+                <p></p>
+                <img src={twoofclubs} alt="card"/>
                 <button> Hit </button>
+                <p></p>
                 <button> Stay </button>
             </div>
         );
