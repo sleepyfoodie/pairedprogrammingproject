@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import aceofclubs from './cards/ace_of_clubs.png';
+import aceofdiamonds from './cards/ace_of_diamonds.png';
+import aceofhearts from './cards/ace_of_hearts.png';
+import aceofspades from './cards/ace_of_spades.png';
 import twoofclubs from './cards/2_of_clubs.png';
 import twoofdiamonds from './cards/2_of_diamonds.png';
 import twoofhearts from './cards/2_of_hearts.png';
@@ -60,223 +64,294 @@ class Cards extends Component {
             dealersHand: [],
             deck: [
                 {
-                    name: 'twoofclubs',
-                    value: 2
+                    name: '2_of_clubs',
+                    value: 2,
+                    image: twoofclubs
                 },
                 {
-                    name: 'twoofdiamonds',
-                    value: 2
+                    name: 'two_of_diamonds',
+                    value: 2,
+                    image: twoofdiamonds
                 },
                 {
-                    name: 'twoofhearts',
-                    value: 2
+                    name: 'two_of_hearts',
+                    value: 2,
+                    image: twoofhearts
                 },
                 {
-                    name: 'twoofspades',
-                    value: 2
+                    name: 'two_of_spades',
+                    value: 2,
+                    image: twoofspades
                 },
                 {
-                    name: 'threeofclubs',
-                    value: 3
+                    name: 'three_of_clubs',
+                    value: 3,
+                    image: threeofclubs
                 },
                 {
-                    name: 'threeofdiamonds',
-                    value: 3
+                    name: 'three_of_diamonds',
+                    value: 3,
+                    image: threeofdiamonds
                 },
                 {
-                    name: 'threeofhearts',
-                    value: 3
+                    name: 'three_of_hearts',
+                    value: 3,
+                    image: threeofhearts
                 },
                 {
-                    name: 'threeofspades',
-                    value: 3
+                    name: 'three_of_spades',
+                    value: 3,
+                    image: threeofspades
                 },
                 {
                     name: 'fourofclubs',
-                    value: 4
+                    value: 4,
+                    image: fourofclubs
                 },
                 {
                     name: 'fourofdiamonds',
-                    value: 4
+                    value: 4,
+                    image: fourofdiamonds
                 },
                 {
                     name: 'fourofhearts',
-                    value: 4
+                    value: 4,
+                    image: fourofhearts
                 },
                 {
                     name: 'fourofspades',
-                    value: 4
+                    value: 4,
+                    image: fourofspades
                 },
                 {
                     name: 'fiveofclubs',
-                    value: 5
+                    value: 5,
+                    image: fiveofclubs
                 },
                 {
                     name: 'fiveofdiamonds',
-                    value: 5
+                    value: 5,
+                    image: fiveofdiamonds
                 },
                 {
                     name: 'fiveofhearts',
-                    value: 5
+                    value: 5,
+                    image: fiveofhearts
                 },
                 {
                     name: 'fiveofspades',
-                    value: 5
+                    value: 5,
+                    image: fiveofspades
                 },
                 {
                     name: 'sixofclubs',
-                    value: 6
+                    value: 6,
+                    image: sixofclubs
                 },
                 {
                     name: 'sixofdiamonds',
-                    value: 6
+                    value: 6,
+                    image: sixofdiamonds
                 },
                 {
                     name: 'sixofhearts',
-                    value: 6
+                    value: 6,
+                    image: sixofhearts
                 },
                 {
                     name: 'sixofspades',
-                    value: 6
+                    value: 6,
+                    image: sixofspades
                 },
                 {
                     name: 'sevenofclubs',
-                    value: 7
+                    value: 7,
+                    image: sevenofclubs
                 },
                 {
                     name: 'sevenofdiamonds',
-                    value: 7
+                    value: 7,
+                    image: sevenofdiamonds
                 },
                 {
                     name: 'sevenofhearts',
-                    value: 7
+                    value: 7,
+                    image: sevenofhearts
                 },
                 {
                     name: 'sevenofspades',
-                    value: 7
+                    value: 7,
+                    image: sevenofspades
                 },
                 {
                     name: 'eightofclubs',
-                    value: 8
+                    value: 8,
+                    image: eightofclubs
                 },
                 {
                     name: 'eightofdiamonds',
-                    value: 8
+                    value: 8,
+                    image: eightofdiamonds
                 },
                 {
                     name: 'eightofhearts',
-                    value: 8
+                    value: 8,
+                    image: eightofhearts
                 },
                 {
                     name: 'eightofspades',
-                    value: 8
+                    value: 8,
+                    image: eightofspades
                 },
                 {
                     name: "nineofclubs",
-                    value: 9
+                    value: 9,
+                    image: nineofclubs
                 },
                 {
                     name: "nineofdiamonds",
-                    value: 9
+                    value: 9,
+                    image: nineofdiamonds
                 },
                 {   
                     name: "nineofhearts",
-                    value: 9
+                    value: 9,
+                    image: nineofhearts
                 },
                 {
                     name: "nineofspades",
-                    value: 9
+                    value: 9,
+                    image: nineofspades
                 },
                 {
                     name: "tenofclubs",
-                    value: 10
+                    value: 10,
+                    image: tenofclubs
                 },
                 {
                     name: "tenofdiamonds",
-                    value: 10
+                    value: 10,
+                    image: tenofdiamonds
                 },
                 {
                     name: "tenofhearts",
-                    value: 10
+                    value: 10,
+                    image: tenofhearts
                 },
                 {
                     name: "tenofspades",
-                    value: 10
+                    value: 10,
+                    image: tenofspades
                 },
                 {
                     name: "aceofclubs",
-                    value: 1
+                    value: 1,
+                    image: aceofclubs
                 },
                 {
                     name: "aceofdiamonds",
-                    value: 1
+                    value: 1,
+                    image: aceofdiamonds
                 },
                 {
                     name: "aceofhearts",
-                    value: 1
+                    value: 1,
+                    image: aceofhearts
                 },
                 {
                     name: "aceofspades",
-                    value: 1
+                    value: 1,
+                    image: aceofspades
                 },
                 {
                     name: "jackofclubs",
-                    value: 10
+                    value: 10,
+                    image: jackofclubs
                 },
                 {
                     name: "jackofdiamonds",
-                    value: 10
+                    value: 10,
+                    image: jackofdiamonds
                 },
                 {   
                     name: "jackofhearts",
-                    value: 10
+                    value: 10,
+                    image: jackofhearts
                 },
                 {   
                     name: "jackofspades",
-                    value: 10
+                    value: 10,
+                    image: jackofspades
                 },
                 {
                     name: "kingofclubs",
-                    value: 10
+                    value: 10,
+                    image: kingofclubs
                 },
                 {
                     name: "kingofdiamonds",
-                    value: 10
+                    value: 10,
+                    image: kingofdiamonds
                 },
                 {
                     name: "kingofhearts",
-                    value: 10
+                    value: 10,
+                    image: kingofhearts
                 },
                 {
                     name: "kingofspades",
-                    value: 10
+                    value: 10,
+                    image: kingofspades
                 },
                 {
                     name: "queenofclubs",
-                    value: 10
+                    value: 10,
+                    image: queenofclubs
                 },
                 {
                     name: "queenofdiamonds",
-                    value: 10
+                    value: 10,
+                    image: queenofdiamonds
                 },
                 {
                     name: "queenofhearts",
-                    value: 10
+                    value: 10,
+                    image: queenofhearts
                 },
                 {
                     name: "queenofspades",
-                    value: 10
+                    value: 10,
+                    image: queenofspades
                 }
             ]
         }
         // this.cardDealPlayer = this.cardDealPlayer.bind(this);
         // this.cardDealDealer = this.cardDealDealer.bind(this);
         this.startPlay = this.startPlay.bind(this);
+        this.playerhit = this.playerhit.bind(this);
         
     }
     
 
     playerhit() {
+        let playersHand = this.state.playersHand;
+        let newPlayDeck = this.state.cards;
+        for (let i = 0; i<2; i++) {
+            var index = Math.floor((Math.random() * newPlayDeck.length))
+            playersHand.push(this.state.deck[index]);
+            newPlayDeck.splice(index,1)
+        }
+        this.setState({
+            cards: newPlayDeck,
+            playersHand: playersHand
+        })
+        let sum = 0
+        for (var i = 0 ; i < playersHand.length ; i++) {
+            sum += this.state.deck[index].value
+        }
+        if (sum < 22) {
+            alert("Busted! Dealer's Win!");
+        }
 
     }
         
@@ -288,7 +363,7 @@ class Cards extends Component {
     //at the start, Player gets 2 cards
         for (let i = 0; i < 2; i++) {
             var index = Math.floor((Math.random() * tempDeck.length))
-            playersHand.push(this.state.deck[index].name);
+            playersHand.push(this.state.deck[index]);
             //2 cards get spliced out
             tempDeck.splice(index, 1)
         }
@@ -298,25 +373,31 @@ class Cards extends Component {
             playersHand: playersHand
         })
         //dealer now gets 2 cards from the same deck
-        let tempDeck = this.state.cards;
+        let dealtempDeck = tempDeck;
         for (let i = 0; i < 2; i++) {
-            var index = Math.floor((Math.random() * tempDeck.length))
+            var index = Math.floor((Math.random() * dealtempDeck.length))
             let sum = 0
-            dealersHand.push(this.state.deck[index].name);
+            dealersHand.push(this.state.deck[index]);
             //calculating sum of dealer's cards
             sum += this.state.deck[index].value
-            tempDeck.splice(index, 1)
+            dealtempDeck.splice(index, 1)
         }
-        dealersHand.push(this.state.deck[index].name);
+        // dealersHand.push(this.state.deck[index].name);
+        console.log(dealersHand)
         this.setState({
             dealersHand: dealersHand
         })
-        //dealer has to draw again if sum is less than 17, and the process repeats...? But how do you know when to stop drawing??
-        if(sum < 18) {
-            let tempDeck = this.state.cards;
-            var index = Math.floor((Math.random() * tempDeck.length))
-            dealersHand.push(this.state.deck[index].name);
-            tempDeck.splice(index,1)
+        //dealer has to draw again if sum is less than 17, and the process repeats...? But how do you know when to stop drawing?? while loop?
+        let sum = 0
+        for (var i = 0 ; i < dealersHand.length ; i++) {
+            sum += this.state.deck[index].value
+        }
+        if (sum < 18) {
+            let newTempDeck = this.state.cards;
+            var index = Math.floor((Math.random() * newTempDeck.length))
+            dealersHand.push(this.state.deck[index]);
+            newTempDeck.splice(index,1)
+            console.log(newTempDeck)
         }
     };
 
@@ -341,15 +422,30 @@ class Cards extends Component {
 
     render() {
         console.log(this.state.cards)
+        console.log(this.state.deck)
         console.log(this.state.dealersHand)
-
         return (
             <div>
                 <button onClick={this.startPlay}>start game</button>
-                {this.state.deck.map((items, i) => <Map index={i} card={items.name} /> )}
-                {/* <img src={twoofclubs} alt="card"/> */}
+                <p>Dealer's Hand</p>
+                {this.state.dealersHand.map((items, i) =>{
+                    console.log(items.name)
+                    console.log('cards/'+items.name+'.png')
+                    return(
+                        <div>
+                            <img src={items.image} alt="card"/>  
+                        </div>)
+                } )}
+                <p>Player's Hand</p>
+                {this.state.playersHand.map((player, i) =>{
+                    return(
+                        <div>
+                            <img src={player.image} alt="player"/>
+                        </div>)
+                })}
+                 
                 <p></p>
-                <button> Hit </button>
+                <button onClick={this.playerhit}> Hit </button>
                 <p></p>
                 <button> Stay </button>
             </div>
@@ -359,14 +455,14 @@ class Cards extends Component {
 
 export default Cards;
 
-class Map extends Component {
-    render() {
-        return(
-            //map function not working properly, need to ask for help tomorrow
-            <img src={this.props.card} />
-        )
-    }
-}
+// class Map extends Component {
+//     render() {
+//         return(
+//             //map function not working properly, need to ask for help tomorrow
+//             <img src={this.props.card} />
+//         )
+//     }
+// }
 
 
 
