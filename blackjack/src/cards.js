@@ -269,8 +269,9 @@ class Cards extends Component {
                 }
             ]
         }
-        this.cardDealPlayer = this.cardDealPlayer.bind(this);
-        this.cardDealDealer = this.cardDealDealer.bind(this);
+        // this.cardDealPlayer = this.cardDealPlayer.bind(this);
+        // this.cardDealDealer = this.cardDealDealer.bind(this);
+        this.startPlay = this.startPlay.bind(this);
         
     }
     
@@ -278,50 +279,76 @@ class Cards extends Component {
     playerhit() {
 
     }
+        
 
-    cardDealPlayer() {
+    startPlay() {
         let playersHand = this.state.playersHand;
+        let dealersHand = this.state.dealersHand;
         let tempDeck = this.state.cards;
-
+    //at the start, Player gets 2 cards
         for (let i = 0; i < 2; i++) {
             var index = Math.floor((Math.random() * tempDeck.length))
-
-            playersHand.push(tempDeck[index]);
+            playersHand.push(this.state.deck[index].name);
+            //2 cards get spliced out
             tempDeck.splice(index, 1)
         }
-
         this.setState({
+            //cards lose 2 from the deck, and players Hand now has 2 cards in the array
             cards: tempDeck,
             playersHand: playersHand
         })
-    };
-
-
-    cardDealDealer() {
-        let dealersHand = this.state.dealersHand;
+        //dealer now gets 2 cards from the same deck
         let tempDeck = this.state.cards;
-
         for (let i = 0; i < 2; i++) {
-            var index = Math.floor((Math.random() * this.state.cards.length))
-
-            dealersHand.push(tempDeck[index]);
+            var index = Math.floor((Math.random() * tempDeck.length))
+            let sum = 0
+            dealersHand.push(this.state.deck[index].name);
+            //calculating sum of dealer's cards
+            sum += this.state.deck[index].value
             tempDeck.splice(index, 1)
         }
-
+        dealersHand.push(this.state.deck[index].name);
         this.setState({
-            cards: tempDeck,
             dealersHand: dealersHand
         })
+        //dealer has to draw again if sum is less than 17, and the process repeats...? But how do you know when to stop drawing??
+        if(sum < 18) {
+            let tempDeck = this.state.cards;
+            var index = Math.floor((Math.random() * tempDeck.length))
+            dealersHand.push(this.state.deck[index].name);
+            tempDeck.splice(index,1)
+        }
     };
+
+
+    // cardDealDealer() {
+    //     let dealersHand = this.state.dealersHand;
+    //     let tempDeck = this.state.cards;
+
+    //     for (let i = 0; i < 2; i++) {
+    //         var index = Math.floor((Math.random() * this.state.cards.length))
+
+    //         dealersHand.push(tempDeck[index]);
+    //         tempDeck.splice(index, 1)
+    //     }
+
+    //     this.setState({
+    //         cards: tempDeck,
+    //         dealersHand: dealersHand
+    //     })
+    // };
 
 
     render() {
-
+        console.log(this.state.cards)
+        console.log(this.state.dealersHand)
 
         return (
             <div>
+                <button onClick={this.startPlay}>start game</button>
+                {this.state.deck.map((items, i) => <Map index={i} card={items.name} /> )}
+                {/* <img src={twoofclubs} alt="card"/> */}
                 <p></p>
-                <img src={twoofclubs} alt="card"/>
                 <button> Hit </button>
                 <p></p>
                 <button> Stay </button>
@@ -331,6 +358,15 @@ class Cards extends Component {
 }
 
 export default Cards;
+
+class Map extends Component {
+    render() {
+        return(
+            //map function not working properly, need to ask for help tomorrow
+            <img src={this.props.card} />
+        )
+    }
+}
 
 
 
