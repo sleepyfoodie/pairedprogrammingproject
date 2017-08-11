@@ -303,6 +303,7 @@ this.setState({
 
  cardDealDealer(){
 
+<<<<<<< HEAD
  for (let i = 0; i<2; i++){
      var index = Math.floor((Math.random() * this.state.cards.length))
 
@@ -315,6 +316,39 @@ this.setState({
 
   render() {
 
+=======
+cardDealPlayer(){
+
+for (i = 0; i<2; i++){
+    let playersHand = [];
+    var index = Math.floor((Math.random() * this.state.cards.length))
+    if(index == this.state.cards.length +1){
+        index = Math.floor((Math.random() * this.state.cards.length))
+    }
+    else{
+    playersHand.push(this.state.cards[index]);
+    this.state.cards.splice(i,1)
+    }
+}
+};
+
+cardDealDealer(){
+
+for (i = 0; i<2; i++){
+    let dealersHand = [];
+    var index = Math.floor((Math.random() * this.state.cards.length))
+    if(index == this.state.cards.length +1){
+        index = Math.floor((Math.random() * this.state.cards.length))
+    }
+    else{
+    dealersHand.push(this.state.cards[index]);
+    this.state.cards.splice(i,1)
+    }
+}
+};
+
+  render() {
+>>>>>>> a95f96340c266cc6922cfd99d51b744e139d9fac
     return (
       <div>
         <img src="{this.state.deck.twoclub.path}"/>
