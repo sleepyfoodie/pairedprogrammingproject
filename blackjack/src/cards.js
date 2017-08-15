@@ -349,11 +349,20 @@ class Cards extends Component {
             playersHand: playersHand
         })
         let sum = 0
+        let value = playersHand.value
         for (var i = 0; i < playersHand.length; i++) {
-            if (playersHand[i].value === 1){
-                sum = confirm("") ? 11 : 1
-            } 
-            sum += playersHand[i].value
+            if (value === 1) {
+                let aceValue = window.confirm("Ace is by default set to 1. Click ok to change to '11' or click cancel to remain at 1")
+                if (aceValue === true) {
+                    sum += 11
+                }
+                else {
+                    sum += 1
+                }
+            }
+            else {
+                sum += playersHand[i].value
+            }
             if (sum >= 22) {
                 alert("Busted! Dealer's Win!");
                 this.setState({
@@ -369,27 +378,27 @@ class Cards extends Component {
     }
 
     dealerhit() {
-        if (this.checkHit()){
+        if (this.checkHit()) {
             console.log('checkHit is running')
-        let sum = 0;
-        let dealersHand = this.state.dealersHand;
-        let newPlayDeck = this.state.cards;
-        var index = Math.floor((Math.random() * newPlayDeck.length))
-        dealersHand.push(this.state.deck[index]);
-        newPlayDeck.splice(index, 1)
-        for (var i = 0; i < dealersHand.length; i++) {
-            sum += dealersHand[i].value
-            if (sum < 18 && this.state.gameStarted) {
-                this.setState({
-                    cards: newPlayDeck,
-                    dealersHand: dealersHand
-                }) 
+            let sum = 0;
+            let dealersHand = this.state.dealersHand;
+            let newPlayDeck = this.state.cards;
+            var index = Math.floor((Math.random() * newPlayDeck.length))
+            dealersHand.push(this.state.deck[index]);
+            newPlayDeck.splice(index, 1)
+            for (var i = 0; i < dealersHand.length; i++) {
+                sum += dealersHand[i].value
+                if (sum < 18 && this.state.gameStarted) {
+                    this.setState({
+                        cards: newPlayDeck,
+                        dealersHand: dealersHand
+                    })
+                }
+                console.log('The dealers hand is now at', sum)
             }
-            console.log('The dealers hand is now at', sum)
+            if (sum < 18) {
+                this.dealerhit()
             }
-        if (sum < 18){
-            this.dealerhit()
-        }
         } else {
             console.log('checkHit is NOT running, dealer or player wins')
         }
@@ -398,7 +407,7 @@ class Cards extends Component {
     checkHit() {
         let dealersHand = this.state.dealersHand
         let playersHand = this.state.playersHand
-        let result = dealersHand.reduce((acc,el)=>acc+el.value,0)
+        let result = dealersHand.reduce((acc, el) => acc + el.value, 0)
         if (result > playersHand.reduce((acc, el) => acc + el.value, 0) && result < 22) {
             alert('Dealer wins!');
             this.setState({
@@ -408,7 +417,7 @@ class Cards extends Component {
             })
             return false
         }
-        else if(result < 18){
+        else if (result < 18) {
             console.log('dealer`s hand is less than 18')
             // this.dealerhit()
             return true
