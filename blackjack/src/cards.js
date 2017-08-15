@@ -369,7 +369,8 @@ class Cards extends Component {
                     gameStarted: false,
                     playersHand: [],
                     dealersHand: [],
-                    playersValue: 0
+                    playersValue: 0,
+                    dealersValue: 0
                 })
             }
         }
@@ -415,7 +416,9 @@ class Cards extends Component {
             this.setState({
                 gameStarted: false,
                 playersHand: [],
-                dealersHand: []
+                dealersHand: [],
+                playersValue: 0,
+                dealersValue: 0
             })
             return false
         }
@@ -429,7 +432,9 @@ class Cards extends Component {
             this.setState({
                 gameStarted: false,
                 playersHand: [],
-                dealersHand: []
+                dealersHand: [],
+                playersValue: 0,
+                dealersValue: 0
             })
             return false
         }
