@@ -1,22 +1,16 @@
 .container{
   position: static;
-  margin: auto;
+  margin: 10%;
 }
+
 .dealer{
-  border: 5px solid black;
-  padding: 200px;
-  position: absolute;
-  top: 2%;
-  left: 40%;
+  display: inline-block;
+  width: 30%;
 
 }
 
 .player{
-  border: 5px solid black;
-  padding: 200px;
-  position: absolute;
-  top: 60%;
-  left: 40%
+  width: 30%;
 }
 
 body {
@@ -28,7 +22,15 @@ body {
 }
 
 img {
-  width: 25%;
+  width: 70%;
+  display: inline-block;
 }
+
+#startButton{
+  position: absolute;
+  top: 10%;
+  left: 80%;
+}
+
 
 /* deck of cards API link: https://deckofcardsapi.com/ */

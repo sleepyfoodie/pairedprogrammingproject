@@ -51,6 +51,8 @@ import queenofclubs from './cards/queen_of_clubs.png';
 import queenofdiamonds from './cards/queen_of_diamonds.png';
 import queenofhearts from './cards/queen_of_hearts.png';
 import queenofspades from './cards/queen_of_spades.png';
+import { Button } from 'react-materialize'
+import './cards.css';
 
 class Cards extends Component {
 
@@ -213,7 +215,7 @@ class Cards extends Component {
                     value: 9,
                     image: nineofdiamonds
                 },
-                {   
+                {
                     name: "nineofhearts",
                     value: 9,
                     image: nineofhearts
@@ -273,12 +275,12 @@ class Cards extends Component {
                     value: 10,
                     image: jackofdiamonds
                 },
-                {   
+                {
                     name: "jackofhearts",
                     value: 10,
                     image: jackofhearts
                 },
-                {   
+                {
                     name: "jackofspades",
                     value: 10,
                     image: jackofspades
@@ -324,55 +326,92 @@ class Cards extends Component {
                     image: queenofspades
                 }
             ],
-            gameStarted: false
+            gameStarted: false,
+            playersValue: 0,
+            dealersValue: 0
         }
-        // this.cardDealPlayer = this.cardDealPlayer.bind(this);
-        // this.cardDealDealer = this.cardDealDealer.bind(this);
         this.startPlay = this.startPlay.bind(this);
         this.playerhit = this.playerhit.bind(this);
         this.dealerhit = this.dealerhit.bind(this);
-        
+        this.checkHit = this.checkHit.bind(this);
+
     }
-    
+
 
     playerhit() {
         let playersHand = this.state.playersHand;
         let newPlayDeck = this.state.cards;
         var index = Math.floor((Math.random() * newPlayDeck.length))
         playersHand.push(this.state.deck[index]);
-        newPlayDeck.splice(index,1)
+        newPlayDeck.splice(index, 1)
         this.setState({
             cards: newPlayDeck,
             playersHand: playersHand
         })
         let sum = 0
-        for (var i = 0 ; i < playersHand.length ; i++) {
+        for (var i = 0; i < playersHand.length; i++) {
             sum += playersHand[i].value
-            if (sum > 22) {
+            if (sum >= 22) {
                 alert("Busted! Dealer's Win!");
+                this.setState({
+                    gameStarted: false,
+                    playersHand: [],
+                    dealersHand: [],
+                    playersValue: 0
+                })
             }
         }
+        console.log("player's new total is " + sum);
+        //add alert
     }
-     
+
     dealerhit() {
+        if (this.checkHit()){
+        let sum = 0;
         let dealersHand = this.state.dealersHand;
         let newPlayDeck = this.state.cards;
-        let playersHand = this.state.playersHand;
         var index = Math.floor((Math.random() * newPlayDeck.length))
         dealersHand.push(this.state.deck[index]);
-        newPlayDeck.splice(index,1)
-        this.setState({
-            cards: newPlayDeck,
-            dealersHand: dealersHand
-        })
-        let sum = 0
-        for (var i = 0 ; i < dealersHand.length ; i++) {
+        newPlayDeck.splice(index, 1)
+        for (var i = 0; i < dealersHand.length; i++) {
             sum += dealersHand[i].value
-            if(sum > playersHand.reduce((acc,el)=>acc+el.value,0) && sum < 22)
-                alert('Dealer wins!')
-            else if(sum > 22) {
-                alert("Busted! Players's Win!");
+            if (sum < 18 && this.state.gameStarted) {
+                this.setState({
+                    cards: newPlayDeck,
+                    dealersHand: dealersHand
+                })
             }
+        }
+        } 
+        this.checkHit()
+    }
+
+    checkHit() {
+        let dealersHand = this.state.dealersHand
+        let playersHand = this.state.playersHand
+        let result = dealersHand.reduce((acc,el)=>acc+el.value,0)
+        if (result > playersHand.reduce((acc, el) => acc + el.value, 0) && result < 22) {
+            alert('Dealer wins!');
+            this.setState({
+                gameStarted: false,
+                playersHand: [],
+                dealersHand: []
+            })
+            return false
+        }
+        else if(result < 18){
+            console.log('result is less than 18')
+            // this.dealerhit()
+            return true
+        }
+        else {
+            alert("Dealer Busted! Players's Win!");
+            this.setState({
+                gameStarted: false,
+                playersHand: [],
+                dealersHand: []
+            })
+            return false
         }
     }
 
@@ -381,79 +420,68 @@ class Cards extends Component {
         let playersHand = this.state.playersHand;
         let dealersHand = this.state.dealersHand;
         let tempDeck = this.state.cards;
-    //at the start, Player gets 2 cards
+        let playerresult = this.state.playersValue;
         for (let i = 0; i < 2; i++) {
             var index = Math.floor((Math.random() * tempDeck.length))
+            let value = this.state.deck[index].value;
             playersHand.push(this.state.deck[index]);
-            //2 cards get spliced out
+            playerresult += value
             tempDeck.splice(index, 1)
         }
+        console.log("player's total is " + playerresult)
         this.setState({
-            //cards lose 2 from the deck, and players Hand now has 2 cards in the array
             cards: tempDeck,
-            playersHand: playersHand
+            playersHand: playersHand,
+            playersValue: playerresult
         })
-        //dealer now gets 2 cards from the same deck
         let dealtempDeck = tempDeck;
-        let total = 0
+        let total = this.state.dealersValue;
         for (let i = 0; i < 2; i++) {
-            var index = Math.floor((Math.random() * dealtempDeck.length))
             let value = this.state.deck[index].value
             dealersHand.push(this.state.deck[index]);
-            //calculating sum of dealer's cards
             total += value
             dealtempDeck.splice(index, 1)
         }
         console.log("dealer's total is " + total)
-        // dealersHand.push(this.state.deck[index].name);
-        console.log(dealersHand)
         this.setState({
             dealersHand: dealersHand,
-            gameStarted: true
+            gameStarted: true,
+            dealersValue: total
         })
-        //dealer has to draw again if sum is less than 17, and the process repeats...? But how do you know when to stop drawing?? while loop?
-        let sum = 0
-        for (var i = 0 ; i < dealersHand.length ; i++) {
-            sum += this.state.deck[index].value
-            console.log(sum)
-        }
-        if (sum < 18 && this.state.gameStarted) {
-            let newTempDeck = this.state.cards;
-            var index = Math.floor((Math.random() * newTempDeck.length))
-            dealersHand.push(this.state.deck[index]);
-            newTempDeck.splice(index,1)
-            console.log(newTempDeck)
-        }
     };
 
     render() {
-        console.log(this.state.cards)
-        console.log(this.state.deck)
-        console.log(this.state.dealersHand)
         return (
-            <div>
-                <button onClick={this.startPlay}>start game</button>
-                <p>Dealer's Hand</p>
-                {this.state.dealersHand.map((items, i) =>{
-                    console.log(items.name)
-                    console.log('cards/'+items.name+'.png')
-                    return(
-                        <div>
-                            <img src={items.image} alt="card"/>  
-                        </div>)
-                } )}
-                <p>Player's Hand</p>
-                {this.state.playersHand.map((player, i) =>{
-                    return(
-                        <div>
-                            <img src={player.image} alt="player"/>
-                        </div>)
-                })}
-                 
-                <p></p>
-                <button onClick={this.playerhit}> Hit </button>
-                <p></p>
-                <button onClick={this.dealerhit}> Stay </button>
+            <div className="container">
+                <div className="dealer">
+                    <div id="startButton">
+                        <Button
+                            onClick={this.startPlay}
+                            disabled={(this.state.gameStarted === true) ? true : false}
+                            waves='light'>start game</Button>
+                    </div>
+                    <p>Dealer's Hand</p>
+                    {this.state.dealersHand.map((items, i) => {
+                        return (
+                            <div>
+                                <img src={items.image} alt="card" />
+                            </div>)
+                    })}
+                </div>
+                <div className="dealer">
+                    <p>Player's Hand</p>
+                    {this.state.playersHand.map((player, i) => {
+                        return (
+                            <div>
+                                <img src={player.image} alt="player" />
+                            </div>)
+                    })}
+
+                    <p></p>
+                    <Button onClick={this.playerhit} waves='light'> Hit </Button>
+                    <p></p>
+                    <Button onClick={this.dealerhit} waves='light'> Stay </Button>
+                </div>
             </div>
         );
     }

@@ -1,7 +1,4 @@
-import React, { Component } from 'react';
-import './App.css';
-import Player from './playerboard';
-import Dealer from './dealerboard';
+import React, { Component } from 'react'
 import Cards from './cards';
 
 class App extends Component {
@@ -9,8 +6,6 @@ class App extends Component {
     return (
       <div className="container">
         <Cards />
-        {/* <Dealer />
-        <Player /> */}
       </div>
     );
   }
