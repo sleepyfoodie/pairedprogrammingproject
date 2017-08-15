@@ -350,6 +350,9 @@ class Cards extends Component {
         })
         let sum = 0
         for (var i = 0; i < playersHand.length; i++) {
+            if (playersHand[i].value === 1){
+                sum = confirm("") ? 11 : 1
+            } 
             sum += playersHand[i].value
             if (sum >= 22) {
                 alert("Busted! Dealer's Win!");
@@ -367,6 +370,7 @@ class Cards extends Component {
 
     dealerhit() {
         if (this.checkHit()){
+            console.log('checkHit is running')
         let sum = 0;
         let dealersHand = this.state.dealersHand;
         let newPlayDeck = this.state.cards;
@@ -379,11 +383,16 @@ class Cards extends Component {
                 this.setState({
                     cards: newPlayDeck,
                     dealersHand: dealersHand
-                })
+                }) 
             }
+            console.log('The dealers hand is now at', sum)
+            }
+        if (sum < 18){
+            this.dealerhit()
         }
-        } 
-        this.checkHit()
+        } else {
+            console.log('checkHit is NOT running, dealer or player wins')
+        }
     }
 
     checkHit() {
@@ -400,7 +409,7 @@ class Cards extends Component {
             return false
         }
         else if(result < 18){
-            console.log('result is less than 18')
+            console.log('dealer`s hand is less than 18')
             // this.dealerhit()
             return true
         }
@@ -420,25 +429,30 @@ class Cards extends Component {
         let playersHand = this.state.playersHand;
         let dealersHand = this.state.dealersHand;
         let tempDeck = this.state.cards;
+        //at the start, Player gets 2 cards
         let playerresult = this.state.playersValue;
         for (let i = 0; i < 2; i++) {
             var index = Math.floor((Math.random() * tempDeck.length))
             let value = this.state.deck[index].value;
             playersHand.push(this.state.deck[index]);
             playerresult += value
+            //2 cards get spliced out
             tempDeck.splice(index, 1)
         }
         console.log("player's total is " + playerresult)
         this.setState({
+            //cards lose 2 from the deck, and players Hand now has 2 cards in the array
             cards: tempDeck,
             playersHand: playersHand,
             playersValue: playerresult
         })
+        //dealer now gets 2 cards from the same deck
         let dealtempDeck = tempDeck;
         let total = this.state.dealersValue;
         for (let i = 0; i < 2; i++) {
             let value = this.state.deck[index].value
             dealersHand.push(this.state.deck[index]);
+            //calculating sum of dealer's cards
             total += value
             dealtempDeck.splice(index, 1)
         }
