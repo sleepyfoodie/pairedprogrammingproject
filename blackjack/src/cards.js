@@ -399,8 +399,10 @@ class Cards extends Component {
             if (sum < 18) {
                 this.dealerhit()
             }
-        } else {
-            console.log('checkHit is NOT running, dealer or player wins')
+            else {
+                console.log('checkHit is NOT running, dealer or player wins')
+                this.checkHit()
+            }
         }
     }
 
@@ -511,3 +513,5 @@ class Cards extends Component {
 }
 
 export default Cards;
+
+//if dealer total = 17, and ace = 11, then hit, but if ace = 1, then stay
